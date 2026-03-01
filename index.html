@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ОРОО ЦПОИ «Ясень» | Центр поддержки общественных инициатив</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fafafa;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .logo span {
+            color: #e67e22;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        nav {
+            background: #34495e;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #e67e22;
+        }
+        
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #e67e22;
+            margin: 15px auto 0;
+        }
+        
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .about-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .about-card .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e67e22;
+        }
+        
+        .about-card .label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-header {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+            padding: 20px;
+        }
+        
+        .project-header h3 {
+            font-size: 1.2rem;
+        }
+        
+        .project-body {
+            padding: 20px;
+        }
+        
+        .project-body p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .project-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #888;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .project-stats span {
+            font-weight: bold;
+            color: #e67e22;
+        }
+        
+        /* Team */
+        .team-section {
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .team-section h2 {
+            color: white;
+        }
+        
+        .team-section h2::after {
+            background: #e67e22;
+        }
+        
+        .team-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .team-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .team-card h3 {
+            margin-bottom: 10px;
+            color: #e67e22;
+        }
+        
+        .team-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Achievements */
+        .achievements-list {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .achievements-list li {
+            background: white;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .achievements-list li::before {
+            content: '✓';
+            color: #e67e22;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Contacts */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .contact-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .contact-item h3 {
+            color: #e67e22;
+            margin-bottom: 10px;
+        }
+        
+        .contact-item a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-item a:hover {
+            color: #e67e22;
+        }
+        
+        .vk-btn {
+            display: inline-block;
+            background: #4a76a8;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        
+        .vk-btn:hover {
+            background: #3d6392;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                gap: 10px;
+            }
+            
+            section {
+                padding: 40px 15px;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">ОРОО ЦПОИ <span>«Ясень»</span></div>
+    <p class="tagline">Центр поддержки общественных инициатив | Омск | С 1999 года</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#projects">Проекты</a></li>
+        <li><a href="#team">Команда</a></li>
+        <li><a href="#achievements">Достижения</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+    </ul>
+</nav>
+
+<section id="about">
+    <h2>О нас</h2>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
+        Омская региональная общественная организация «Центр поддержки общественных инициатив „Ясень“» — объединение клубов, действующих в сфере исторической реконструкции, экологии и творчества. Сильная сторона — умение совместно делать большие проекты.
+    </p>
+    <div class="about-content">
+        <div class="about-card">
+            <div class="number">25+</div>
+            <div class="label">лет деятельности</div>
+        </div>
+        <div class="about-card">
+            <div class="number">7</div>
+            <div class="label">реализованных грантов</div>
+        </div>
+        <div class="about-card">
+            <div class="number">100+</div>
+            <div class="label">волонтёров</div>
+        </div>
+        <div class="about-card">
+            <div class="number">20 000+</div>
+            <div class="label">участников проектов</div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" style="background: #f0f0f0;">
+    <h2>Наши проекты</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Военно-исторический фестиваль «Щит Сибири»</h3>
+            </div>
+            <div class="project-body">
+                <p>Старейший в Сибири военно-исторический фестиваль. Турниры по историческому фехтованию, реконструкция боёв, лагерь живой истории.</p>
+                <div class="project-stats">
+                    <span>5000+ зрителей</span>
+                    <span>Ежегодно с 2009</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <h3>«Уроки живой истории»</h3>
+            </div>
+            <div class="project-body">
+                <p>Интерактивные занятия в школах — реконструкторы в исторических костюмах рассказывают о воинской культуре, ученики держат в руках мечи и кольчуги.</p>
+                <div class="project-stats">
+                    <span>210 уроков</span>
+                    <span>4200 школьников</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Историко-образовательный квест «Ткань времени»</h3>
+            </div>
+            <div class="project-body">
+                <p>Мобильный музей живой истории под открытым небом. Проводился в Омске, Екатеринбурге и Челябинской области.</p>
+                <div class="project-stats">
+                    <span>14 000+ гостей</span>
+                    <span>3 региона</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Школа юного реконструктора</h3>
+            </div>
+            <div class="project-body">
+                <p>Молодёжный клуб исторической реконструкции для старшеклассников. Воссоздание костюма, ремесленные навыки, фехтование и стрельба из лука.</p>
+                <div class="project-stats">
+                    <span>Грант ФПГ</span>
+                    <span>2023-2024</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Ремесленная мастерская «Умелец»</h3>
+            </div>
+            <div class="project-body">
+                <p>Мастер-классы по историческому гончарному и столярному делу для подростков и родителей. Семейный формат.</p>
+                <div class="project-stats">
+                    <span>300+ участников</span>
+                    <span>Грант ФПГ</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <h3>«Музей живой истории»</h3>
+            </div>
+            <div class="project-body">
+                <p>Интерактивные площадки и онлайн-трансляции в период пандемии. Адаптация к новым условиям.</p>
+                <div class="project-stats">
+                    <span>19 000+ онлайн</span>
+                    <span>40+ публикаций в СМИ</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="team" class="team-section">
+    <h2>Команда</h2>
+    <div class="team-content">
+        <div class="team-card">
+            <h3>Распопов Алексей Анатольевич</h3>
+            <p>Председатель совета ОРОО «Ясень». Более 20 лет общественной деятельности. Руководитель проектов, грантовый менеджер. С 2024 — председатель Омского отделения движения «РосРекон».</p>
+        </div>
+        <div class="team-card">
+            <h3>Команда проекта</h3>
+            <p>Режиссёры, историки, педагоги, реконструкторы. Члены клуба участвуют в фестивалях, ведут мастер-классы, организуют масштабные мероприятия.</p>
+        </div>
+        <div class="team-card">
+            <h3>Волонтёры</h3>
+            <p>Более 100 добровольцев принимают участие в организации фестивалей, квестов, мастер-классов. Молодёжь передаёт опыт следующему поколению.</p>
+        </div>
+    </div>
+</section>
+
+<section id="achievements">
+    <h2>Достижения</h2>
+    <ul class="achievements-list">
+        <li>7 грантов Президентского фонда грантов реализовано</li>
+        <li>Благодарственные письма от Администрации города Омска и Екатеринбурга</li>
+        <li>Проекты реализованы в Омской, Новосибирской, Челябинской и Свердловской областях</li>
+        <li>Более 20 000 участников за последние 5 лет</li>
+        <li>Партнёрство с клубами исторической реконструкции России</li>
+    </ul>
+</section>
+
+<section id="contacts" style="background: #f0f0f0;">
+    <h2>Контакты</h2>
+    <div class="contacts-grid">
+        <div class="contact-item">
+            <h3>Email</h3>
+            <a href="mailto:verst@bk.ru">verst@bk.ru</a>
+        </div>
+        <div class="contact-item">
+            <h3>Телефон</h3>
+            <a href="tel:+79131451874">+7 (913) 145-18-74</a>
+        </div>
+        <div class="contact-item">
+            <h3>Группа ВКонтакте</h3>
+            <p>Новости, фотоотчёты, анонсы мероприятий</p>
+            <a href="https://vk.com/sib_shield" class="vk-btn" target="_blank">Подписаться</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© ОРОО «ЦПОИ Ясень» | Омск | 2024</p>
+    <p style="margin-top: 10px; font-size: 0.8rem;">Центр поддержки общественных инициатив</p>
+</footer>
+
+</body>
+</html>
